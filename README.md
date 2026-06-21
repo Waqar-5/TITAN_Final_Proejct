@@ -1,4 +1,4 @@
-# SMIT LMS — Student Portal
+# TiTAN LMS — Student Portal
 
 A React + Vite + Tailwind clone of the SMIT (Saylani Mass IT Training) student
 portal at `lms.saylanimit.com`, built so a real backend can be dropped in
