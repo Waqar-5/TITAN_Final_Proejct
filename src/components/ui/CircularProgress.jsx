@@ -1,0 +1,46 @@
+// src/components/ui/CircularProgress.jsx
+export default function CircularProgress({
+  percent = 0,
+  size = 44,
+  strokeWidth = 4,
+  className = "",
+}) {
+  const clamped = Math.max(0, Math.min(100, percent));
+  const radius = (size - strokeWidth) / 2;
+  const circumference = 2 * Math.PI * radius;
+  const offset = circumference - (clamped / 100) * circumference;
+
+  return (
+    <div
+      className={`relative inline-flex items-center justify-center ${className}`}
+      style={{ width: size, height: size }}
+    >
+      <svg width={size} height={size} className="-rotate-90">
+        <circle
+          cx={size / 2}
+          cy={size / 2}
+          r={radius}
+          fill="none"
+          stroke="currentColor"
+          strokeWidth={strokeWidth}
+          className="text-ink-100"
+        />
+        <circle
+          cx={size / 2}
+          cy={size / 2}
+          r={radius}
+          fill="none"
+          stroke="currentColor"
+          strokeWidth={strokeWidth}
+          strokeDasharray={circumference}
+          strokeDashoffset={offset}
+          strokeLinecap="round"
+          className="text-brand-600 transition-all duration-500 ease-out"
+        />
+      </svg>
+      <span className="absolute text-[11px] font-bold text-brand-700">
+        {clamped}%
+      </span>
+    </div>
+  );
+}
